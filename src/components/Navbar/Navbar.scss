@@ -151,3 +151,28 @@
     display: none;
   }
 }
+.app__cv {
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+  border-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+
+  &:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
+
+  @media screen and (min-width: 2000px) {
+    padding: 1rem 2rem;
+    border-radius: 0.85rem;
+  }
+}

@@ -7,21 +7,37 @@ import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const onButtonClick = () => {
+    fetch("cv.pdf").then((response) => {
+      response.blob().then((blob) => {
+        const fileURL = window.URL.createObjectURL(blob);
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "lebenslauf.pdf";
+        // alink.target = "blank";
+        alink.click();
+      });
+    });
+  };
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
         <img src={images.logo} alt="logo" />
       </div>
       <ul className="app__navbar-links">
-        {["home", "about", "work", "skills", "testimonial", "contact"].map(
-          (item) => (
-            <li key={`link-${item}`} className="app__flex p-text">
-              <div />
-              <a href={`#${item}`}>{item}</a>
-            </li>
-          )
-        )}
+        {/* {["home", "about", "work", "skills", "testimonial", "contact"].map( */}
+        {["home", "about", "work", "skills", "contact"].map((item) => (
+          <li key={`link-${item}`} className="app__flex p-text">
+            <div />
+            <a href={`#${item}`}>{item}</a>
+          </li>
+        ))}
       </ul>
+      <div>
+        <button className="app__cv" onClick={onButtonClick}>
+          Download CV
+        </button>
+      </div>
       <div className="app__navbar-menu">
         <HiMenuAlt4 onClick={() => setToggle(true)} />
         {toggle && (
