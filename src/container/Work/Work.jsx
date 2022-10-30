@@ -5,7 +5,7 @@ import { AppWrap, MotionWrap } from "../../wrapper";
 import { UrlFor, client } from "../../client";
 import "./Work.scss";
 const Work = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("ALL");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [work, setWork] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
@@ -102,6 +102,32 @@ const Work = () => {
               </p>
               <div className="app__work-tag app__flex">
                 <p className="p-text">{work.tags[0]}</p>
+              </div>
+              <div className="app__work__links__content">
+                <a href={work.projectLink} target="blank" rel="noreferrer">
+                  <motion.div
+                    whileHover={{ scale: [1, 0.9] }}
+                    whileInView={{ sclae: [0, 1] }}
+                    transition={{
+                      duration: 0.25,
+                    }}
+                    className=" app__flex"
+                  >
+                    <AiFillEye />
+                  </motion.div>
+                </a>
+                <a href={work.codeLink} target="blank" rel="noreferrer">
+                  <motion.div
+                    whileHover={{ scale: [1, 0.9] }}
+                    whileInView={{ sclae: [0, 1] }}
+                    transition={{
+                      duration: 0.25,
+                    }}
+                    className=" app__flex"
+                  >
+                    <AiFillGithub />
+                  </motion.div>
+                </a>
               </div>
             </div>
           </div>
